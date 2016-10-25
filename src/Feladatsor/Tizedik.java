@@ -11,9 +11,9 @@ public class Tizedik{
 		do
 		{
 			szum = szum + i;
-			i = i +2;
+			i = i + 2;
 		}while(i<30);
-		avg = szum / i;
+		avg = szum / (i / 2); //azert osztom i-t 2 vel mert a lepeskozom i+2
 		System.out.println("Atlaga: " + avg);
 		System.out.println("Osszege: " + szum);
 	}
