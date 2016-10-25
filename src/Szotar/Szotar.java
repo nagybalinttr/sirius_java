@@ -16,25 +16,21 @@ public class Szotar {
 		
 		tomb_hossza = szavak_magyar.length; //a .lenght adja meg hany elemu a tombunk
 		System.out.println("Jelenleg " + tomb_hossza + " darab szo talalhato az adatbazisban.");
-		System.out.println("Adj meg egy magyar szot es megmondom az angol megefelelojet");
+		System.out.println("Adj meg egy magyar szot es megmondom az angol megefelelojet.");
+		System.out.print("A megadott szo: ");
 		szo = sc.nextLine();
 		
 		for(i=0; i < tomb_hossza; i++)
 		{
-			if(szo.equals(szavak_magyar[i]))
+			if(szo.equals(szavak_magyar[i])) //a .equals() felel meg az == -nek
 			{
 				talalat = true;
-				break; //azert van ra szokseg mert a for ciklus vegig menne a tombon es akkor a talalatkor ervenyes i erteket egy segedvaltozoba el kellene tarolni
+				break; //azert van ra szukseg mert a for ciklus vegig megy a tombon es akkor a talalatkor ervenyes i erteket egy segedvaltozoba kellene tarolni
 			}
 		}
-		if(talalat) //mivel true -ra vizsgalunk ezert nem kell neki feltetelt adni
-		{
-			System.out.println(szavak_angol[i]);
-		}
+		if(talalat) //az if true-ra vizsgal ezert nem kell neki feltetelt adni
+			System.out.println("A(z) " + szo + " angolul: " + szavak_angol[i]);
 		else
-		{
 			System.out.println("Nincs talalat!");
-		}
-			
 	}
 }
