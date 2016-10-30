@@ -4,22 +4,20 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.Button;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Checkbox;
-import java.awt.Choice;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import java.awt.Panel;
 import java.awt.TextField;
 import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 
 public class PWG {
 
-	private JFrame frame;
+	private JFrame frmJelszGenerls;
 
 	/**
 	 * Launch the application.
@@ -29,7 +27,7 @@ public class PWG {
 			public void run() {
 				try {
 					PWG window = new PWG();
-					window.frame.setVisible(true);
+					window.frmJelszGenerls.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,47 +46,58 @@ public class PWG {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 775, 536);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmJelszGenerls = new JFrame();
+		frmJelszGenerls.setTitle("Jelsz\u00F3 gener\u00E1l\u00E1s");
+		frmJelszGenerls.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frmJelszGenerls.setBounds(100, 100, 775, 536);
+		frmJelszGenerls.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Checkbox checkbox = new Checkbox("Nagybet\u0171");
-		checkbox.setBounds(44, 81, 95, 22);
-		frame.getContentPane().add(checkbox);
+		checkbox.setBounds(45, 80, 95, 25);
+		frmJelszGenerls.getContentPane().add(checkbox);
 		Checkbox checkbox_1 = new Checkbox("Sz\u00E1m");
-		checkbox_1.setBounds(145, 81, 95, 22);
-		frame.getContentPane().add(checkbox_1);
+		checkbox_1.setBounds(145, 80, 95, 25);
+		frmJelszGenerls.getContentPane().add(checkbox_1);
 		
 		Checkbox checkbox_2 = new Checkbox("Spec karakter");
-		checkbox_2.setBounds(88, 109, 95, 22);
-		frame.getContentPane().add(checkbox_2);
+		checkbox_2.setBounds(90, 100, 100, 25);
+		frmJelszGenerls.getContentPane().add(checkbox_2);
 		
 		TextField textField = new TextField();
-		textField.setBounds(201, 25, 24, 22);
-		frame.getContentPane().add(textField);
+		textField.setText("8");
+		textField.setBounds(200, 20, 100, 25);
+		frmJelszGenerls.getContentPane().add(textField);
 		
 		TextField textField_1 = new TextField();
-		textField_1.setBounds(201, 53, 24, 22);
-		frame.getContentPane().add(textField_1);
+		textField_1.setText("3");
+		textField_1.setBounds(200, 50, 100, 25);
+		frmJelszGenerls.getContentPane().add(textField_1);
 
 		JLabel lblMilyenHosszJelszt = new JLabel("Milyen hossz\u00FA jelsz\u00F3t k\u00E9rsz?");
-		lblMilyenHosszJelszt.setBounds(55, 25, 140, 14);
-		frame.getContentPane().add(lblMilyenHosszJelszt);
+		lblMilyenHosszJelszt.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblMilyenHosszJelszt.setBounds(10, 25, 185, 14);
+		frmJelszGenerls.getContentPane().add(lblMilyenHosszJelszt);
 		
 		JLabel label = new JLabel("H\u00E1ny darab jelsz\u00F3t k\u00E9rsz?");
-		label.setBounds(65, 53, 130, 14);
-		frame.getContentPane().add(label);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		label.setBounds(20, 53, 175, 14);
+		frmJelszGenerls.getContentPane().add(label);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(350, 47, 383, 439);
-		frame.getContentPane().add(textPane);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(350, 50, 400, 400);
+		frmJelszGenerls.getContentPane().add(scrollPane);
+			
+		JTextPane textArea = new JTextPane();
+		scrollPane.setViewportView(textArea);
+		textArea.setEditable(false);
 		
 		JLabel lblJelszavak = new JLabel("Jelszavak:");
-		lblJelszavak.setBounds(517, 25, 63, 14);
-		frame.getContentPane().add(lblJelszavak);
+		lblJelszavak.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblJelszavak.setBounds(520, 25, 100, 25);
+		frmJelszGenerls.getContentPane().add(lblJelszavak);
 		
 		Button button = new Button("Gener\u00E1l\u00E1s");
-		button.setBounds(37, 144, 188, 22);
+		button.setBounds(45, 144, 200, 25);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int hossz = 0;
@@ -110,6 +119,14 @@ public class PWG {
 				nagybetu = String.valueOf(checkbox.getState());
 				szam = String.valueOf(checkbox_1.getState());
 				spec = String.valueOf(checkbox_2.getState());
+				
+				//hossz es db szam ellenorzes
+				if(hossz < 8){
+					hossz = 8;
+				}
+				if(db < 3){
+					db = 3;
+				}
 				
 				//a vegleges tomb hosszanak meghatarozasa
 				if(kisbetu.equals("true")){vegleges_tomb_hossza += tomb_kisbetu.length;}
@@ -166,10 +183,10 @@ public class PWG {
 				}
 				
 				//jelszavak kiiratasa
-				textPane.setText(jelszo_out);
+				textArea.setText(jelszo_out);
 			}
 		});
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(button);
+		frmJelszGenerls.getContentPane().setLayout(null);
+		frmJelszGenerls.getContentPane().add(button);
 	}
 }
