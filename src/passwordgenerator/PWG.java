@@ -1,31 +1,23 @@
 package passwordgenerator;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
-import java.awt.Checkbox;
-import java.awt.TextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
-import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SpinnerDateModel;
-import java.util.Date;
-import java.util.Calendar;
-import javax.swing.JSlider;
-import javax.swing.JToggleButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.awt.Toolkit;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Color;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
 
 public class PWG {
 
@@ -59,62 +51,47 @@ public class PWG {
 	 */
 	private void initialize() {
 		frmJelszGenerls = new JFrame();
+		frmJelszGenerls.setIconImage(Toolkit.getDefaultToolkit().getImage(PWG.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-information@2x.png")));
+		frmJelszGenerls.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frmJelszGenerls.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+		frmJelszGenerls.setType(Type.POPUP);
 		frmJelszGenerls.setTitle("Jelsz\u00F3 gener\u00E1tor");
-		frmJelszGenerls.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
+		frmJelszGenerls.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		frmJelszGenerls.setBounds(100, 100, 775, 536);
 		frmJelszGenerls.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		Checkbox checkbox = new Checkbox("Nagybet\u0171");
-		checkbox.setBounds(90, 154, 100, 25);
-		frmJelszGenerls.getContentPane().add(checkbox);
-		Checkbox checkbox_1 = new Checkbox("Sz\u00E1m");
-		checkbox_1.setBounds(90, 185, 100, 25);
-		frmJelszGenerls.getContentPane().add(checkbox_1);
-		
-		Checkbox checkbox_2 = new Checkbox("Spec karakter");
-		checkbox_2.setBounds(90, 218, 100, 25);
-		frmJelszGenerls.getContentPane().add(checkbox_2);
-		
-		TextField textField = new TextField();
-		textField.setText("8");
-		textField.setBounds(200, 50, 100, 25);
-		frmJelszGenerls.getContentPane().add(textField);
-		
-		TextField textField_1 = new TextField();
-		textField_1.setText("3");
-		textField_1.setBounds(200, 80, 100, 25);
-		frmJelszGenerls.getContentPane().add(textField_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(350, 50, 400, 400);
 		frmJelszGenerls.getContentPane().add(scrollPane);
 			
 		JTextPane textArea = new JTextPane();
-		textArea.setEditable(false);
+		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		scrollPane.setViewportView(textArea);
 
 		JLabel lblMilyenHosszJelszt = new JLabel("Milyen hossz\u00FA jelsz\u00F3t k\u00E9rsz?");
-		lblMilyenHosszJelszt.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblMilyenHosszJelszt.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblMilyenHosszJelszt.setBounds(24, 61, 166, 14);
 		frmJelszGenerls.getContentPane().add(lblMilyenHosszJelszt);
 		
 		JLabel label = new JLabel("H\u00E1ny darab jelsz\u00F3t k\u00E9rsz?");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		label.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		label.setBounds(36, 91, 154, 14);
 		frmJelszGenerls.getContentPane().add(label);
 		
 		JLabel lblJelszavak = new JLabel("Jelszavak:");
-		lblJelszavak.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblJelszavak.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		lblJelszavak.setBounds(520, 25, 100, 25);
 		frmJelszGenerls.getContentPane().add(lblJelszavak);
 		
-		JLabel lblMilyenKaraktereketSzeretnl = new JLabel("Milyen karaktereket szeretn\u00E9l l\u00E1tni a jelsz\u00F3ban?");
-		lblMilyenKaraktereketSzeretnl.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblMilyenKaraktereketSzeretnl = new JLabel("Milyen karaktereket szeretn\u00E9l l\u00E1tni a jelszavakban?");
+		lblMilyenKaraktereketSzeretnl.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblMilyenKaraktereketSzeretnl.setBounds(10, 127, 290, 14);
 		frmJelszGenerls.getContentPane().add(lblMilyenKaraktereketSzeretnl);
 		
 		JLabel lblJelszGenertor = new JLabel("Jelsz\u00F3 gener\u00E1tor");
-		lblJelszGenertor.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblJelszGenertor.setToolTipText("");
+		lblJelszGenertor.setIcon(null);
+		lblJelszGenertor.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		lblJelszGenertor.setBounds(308, 11, 134, 25);
 		frmJelszGenerls.getContentPane().add(lblJelszGenertor);
 		
@@ -128,48 +105,82 @@ public class PWG {
 		label_1.setBounds(36, 449, 200, 25);
 		frmJelszGenerls.getContentPane().add(label_1);
 		
-		Button button = new Button("Gener\u00E1l\u00E1s");
-		button.setBounds(36, 249, 200, 25);
-		button.addActionListener(new ActionListener() {
+		JSpinner spinner_hossz = new JSpinner();
+		spinner_hossz.setToolTipText("Minimum 8, maximum 25 karakter hossz\u00FA jelsz\u00F3t tudsz k\u00E9rni.");
+		spinner_hossz.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		spinner_hossz.setModel(new SpinnerNumberModel(8, 8, 25, 1));
+		spinner_hossz.setBounds(200, 50, 100, 25);
+		frmJelszGenerls.getContentPane().add(spinner_hossz);
+		
+		JSpinner spinner_db = new JSpinner();
+		spinner_db.setToolTipText("Minimum 3db, maximum 5000db jelsz\u00F3t tudsz k\u00E9rni!");
+		spinner_db.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		spinner_db.setModel(new SpinnerNumberModel(3, 3, 5000, 1));
+		spinner_db.setBounds(200, 80, 100, 25);
+		frmJelszGenerls.getContentPane().add(spinner_db);
+		frmJelszGenerls.getContentPane().setLayout(null);
+		
+		JCheckBox check_nagybetu = new JCheckBox("Nagybet\u0171");
+		check_nagybetu.setToolTipText("Szeretn\u00E9l nagybet\u0171ket a jelszavakba?");
+		check_nagybetu.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		check_nagybetu.setBounds(90, 150, 100, 25);
+		frmJelszGenerls.getContentPane().add(check_nagybetu);
+		
+		JCheckBox check_szam = new JCheckBox("Sz\u00E1m");
+		check_szam.setToolTipText("Szeretn\u00E9l sz\u00E1mokat a jelszavadba?");
+		check_szam.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		check_szam.setBounds(90, 178, 100, 25);
+		frmJelszGenerls.getContentPane().add(check_szam);
+		
+		JCheckBox check_spec = new JCheckBox("Speci\u00E1lis karakter");
+		check_spec.setToolTipText("Szeretn\u00E9l speci\u00E1lis karaktereket a jelszavadba?");
+		check_spec.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		check_spec.setBounds(90, 206, 125, 25);
+		frmJelszGenerls.getContentPane().add(check_spec);
+		
+		JButton btnGeneral = new JButton("Gener\u00E1l\u00E1s");
+		btnGeneral.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		btnGeneral.setBounds(49, 238, 200, 25);
+		btnGeneral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int hossz = 0;
 				int db = 0;
 				int a_max = 0;
 				int vegleges_tomb_hossza = 0;
-				String kisbetu = "true";
-				String nagybetu = null;
-				String szam = null;
-				String spec = null;
+				Boolean kisbetu = true;
+				Boolean nagybetu = false;
+				Boolean szam = false;
+				Boolean spec = false;
 				
 				String[] tomb_kisbetu = {"q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "y", "x", "c", "v", "b", "n", "m"};
 				String[] tomb_nagybetu = {"Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Y", "X", "C",  "V", "B", "N", "M"};
 				String[] tomb_szam = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 				String[] tomb_spec = {"+", "!", "%", "/", "=", "(", ")", "<", ">", "&", "@", "{", "}", "["};
 				
-				
-				hossz = Integer.parseInt(textField.getText());
-				db = Integer.parseInt(textField_1.getText());
-				nagybetu = String.valueOf(checkbox.getState());
-				szam = String.valueOf(checkbox_1.getState());
-				spec = String.valueOf(checkbox_2.getState());
+				hossz = (int) spinner_hossz.getValue();
+				db = (int) spinner_db.getValue();
+				nagybetu = check_nagybetu.isSelected();
+				szam = check_szam.isSelected();
+				spec = check_spec.isSelected();
+				//JOptionPane.showMessageDialog(null, check_nagybetu.isSelected());
 				
 				//hossz es db szam ellenorzes
-				if((hossz >= 8 && hossz <= 25) && (db >= 3 && db <= 5000)){
+				if(hossz >= 8 && hossz <= 25 && db >= 3 && db <= 5000){
 					//a vegleges tomb hosszanak meghatarozasa
-					if(kisbetu.equals("true")){vegleges_tomb_hossza += tomb_kisbetu.length;}
-					if(nagybetu.equals("true")){vegleges_tomb_hossza += tomb_nagybetu.length;}
-					if(szam.equals("true")){vegleges_tomb_hossza += tomb_szam.length;}
-					if(spec.equals("true")){vegleges_tomb_hossza += tomb_spec.length;}		
+					if(kisbetu){vegleges_tomb_hossza += tomb_kisbetu.length;}
+					if(nagybetu){vegleges_tomb_hossza += tomb_nagybetu.length;}
+					if(szam){vegleges_tomb_hossza += tomb_szam.length;}
+					if(spec){vegleges_tomb_hossza += tomb_spec.length;}		
 					String[] tomb_vegleges = new String[vegleges_tomb_hossza];
 					
 					//vegleges tomb elmeinek inicializalasa
-					if(kisbetu.equals("true")){
+					if(kisbetu){
 						for(int a = 0, b = 0; b < tomb_kisbetu.length; a++, b++){
 							tomb_vegleges[a] = tomb_kisbetu[b];
 							a_max = a;
 						}
 					}
-					if(nagybetu.equals("true")){
+					if(nagybetu){
 						if(a_max != 0){ //erre azert van szukseg mert ha az elozo feltetelek kozul valamelyik false volt akkor az a_max erteke a cikus kezdetekor 1 lenne es igy a tomb_vegleges[0] helyen nem kerulne feltoltesre
 							a_max++; //azert novelem a_max-ot hogy ne legyen felulirva a tomb_vegleges[] utolso helyen szereplo ertek
 						}
@@ -178,7 +189,7 @@ public class PWG {
 							a_max = a;
 						}
 					}
-					if(szam.equals("true")){
+					if(szam){
 						if(a_max != 0){ //erre azert van szukseg mert ha az elozo feltetelek kozul valamelyik false volt akkor az a_max erteke a cikus kezdetekor 1 lenne es igy a tomb_vegleges[0] helyen nem kerulne feltoltesre
 							a_max++; //azert novelem a_max-ot hogy ne legyen felulirva a tomb_vegleges[] utolso helyen szereplo ertek
 						}
@@ -187,7 +198,7 @@ public class PWG {
 							a_max = a;
 						}
 					}
-					if(spec.equals("true")){
+					if(spec){
 						if(a_max != 0){ //erre azert van szukseg mert ha az elozo feltetelek kozul valamelyik false volt akkor az a_max erteke a cikus kezdetekor 1 lenne es igy a tomb_vegleges[0] helyen nem kerulne feltoltesre
 							a_max++; //azert novelem a_max-ot hogy ne legyen felulirva a tomb_vegleges[] utolso helyen szereplo ertek
 						}
@@ -212,6 +223,7 @@ public class PWG {
 					//jelszavak kiiratasa
 					textArea.setText(jelszo_out);
 				}
+				// hibauzenetek
 				else if(db < 3 && hossz < 8){
 					JOptionPane.showMessageDialog(null, "Minimum 8 karakterbõl kell álnia a jelszavadnak és minimum 3db-ot kell kérned!");
 				}
@@ -232,7 +244,6 @@ public class PWG {
 				}
 			}
 		});
-		frmJelszGenerls.getContentPane().setLayout(null);
-		frmJelszGenerls.getContentPane().add(button);
+		frmJelszGenerls.getContentPane().add(btnGeneral);
 	}
 }
