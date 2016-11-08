@@ -1,5 +1,7 @@
 package Tomb;
 
+import java.util.Scanner;
+
 public class Programozas_tetelek {
 
 	public static void main(String[] args) {
@@ -30,7 +32,7 @@ public class Programozas_tetelek {
 				db++;
 			}
 		}
-		System.out.println(db + "db paros szam talalhato a tombben");
+		System.out.println(db + "db paros szam talalhato a Sen");
 		
 		//eldontes tetele
 		System.out.println("\n"); //ures sor beszurasa
@@ -78,6 +80,52 @@ public class Programozas_tetelek {
 		else{
 			System.out.println("A 9 nem talalhato a tombben");
 		}
-	}
+		
+		//binaris kereses
+		/**
+		 * csak sorba rendezett tombon lehet binaris kereset vegezni
+		 */
+		System.out.println("\n");
+		System.out.println("Binaris kereses tetele");
+		int[] tomb2 = {4, 2, 6, 8, 9, 21, 65, 101, 0, 10};
+		int seged, j, k;
+		for(j = 0; j < 10; j++){
+			for(k = 0; k < 9; k++){ //azert megyunk csak 9-ig mert így i+1 maximum 9 lehet
+				if(tomb2[k] > tomb2[k+1]){
+					seged = tomb2[k+1];
+					tomb2[k+1] = tomb2[k];
+					tomb2[k] = seged;
+				}
+			}	
+		}
+		/*
+		for(int x = 0; x < 10; x++){
+			System.out.print(tombb[x] + " ");
+		}
+		*/
+		Scanner sc = new Scanner(System.in);
+		int eleje = 0, vege = 9, kozepe = vege/2;
+		talalat = false;
+		System.out.println("Add meg a keresett számot: ");
+		int keresett = sc.nextInt();
+		while(eleje<=vege){
+			if(tomb2[kozepe] == keresett){
+				System.out.println("A keresett elem a " + kozepe + ". helyen talalható");
+				talalat = true;
+				break;
+			}
+			else if(keresett > tomb2[kozepe]){
+				eleje = kozepe + 1;
+			}
+			else{
+				vege = kozepe - 1;
+			}
+			kozepe = (vege + eleje) / 2;
+		}
+		if(!talalat){
+			System.out.println("Nem talalhato a keresett ertek!");
+		}
+		
+	} 
 
 }
