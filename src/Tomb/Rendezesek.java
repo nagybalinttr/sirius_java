@@ -24,7 +24,7 @@ public class Rendezesek {
 		
 		// ket iranyu tamadas
 		/*
-		for(j = 9; j >= 0; j--){
+		for(j = 9; j > 0; j--){
 			for(i = 0; i < j; i++){
 				if(tomb[i+1] < tomb[i]){
 					

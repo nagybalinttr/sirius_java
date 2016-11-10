@@ -110,7 +110,7 @@ public class Programozas_tetelek {
 		int keresett = sc.nextInt();
 		while(eleje<=vege){
 			if(tomb2[kozepe] == keresett){
-				System.out.println("A keresett elem a " + kozepe + ". helyen talalható");
+				System.out.println("A keresett elem a " + kozepe + ". indexen talalható");
 				talalat = true;
 				break;
 			}
