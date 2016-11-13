@@ -1,11 +1,11 @@
 package Tomb;
 
 
-public class Feladat_tomb1 {
+public class Feladat_1_tombkiiratas_objektummal {
 	public static void main(String[] args) {
 		int[] tomb = {9,5,6,7,8,2,3,4,1};
 		
-		Tombprint kiir = new Tombprint();
+		TombPrint kiir = new TombPrint();
 		
 		System.out.println("1. feladat. Tomb elemeinek kiirasa");
 		kiir.kiir(tomb);
@@ -17,16 +17,9 @@ public class Feladat_tomb1 {
 		for(j = 8; j > 0; j--){
 			for(i = 0; i < j; i++){
 				if(tomb[i+1] < tomb[i]){
-					a = tomb[i];
-					b = tomb[i+1];
-					a = a + b;
-					b = a - b;
-					a = a - b;
-					tomb[i] = a;
-					tomb[i+1] = b;
-					//seged = tomb[i+1];
-					//tomb[i+1] = tomb[i];
-					//tomb[i] = seged;	
+					seged = tomb[i+1];
+					tomb[i+1] = tomb[i];
+					tomb[i] = seged;	
 				}
 			}
 		}

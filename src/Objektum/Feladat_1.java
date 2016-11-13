@@ -1,5 +1,4 @@
 package Objektum;
-
 import java.util.Scanner;
 
 public class Feladat_1 {
