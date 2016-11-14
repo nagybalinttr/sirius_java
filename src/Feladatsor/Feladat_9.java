@@ -1,8 +1,6 @@
 package Feladatsor;
-import java.io.*;
-import java.util.Scanner;
 
-public class Kilencedik{
+public class Feladat_9{
 	public static void main(String[] args) {
 		double avg = 0;
 		double szum = 0;

@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Negyedik {
+public class Feladat_4 {
 	public static void main(String[] args) {
 		int a = 0;
 		int n = 0;

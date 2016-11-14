@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Hatodik{
+public class Feladat_6{
 	public static void main(String[] args) {
 		int abs = 0;
 		int szam = 0;

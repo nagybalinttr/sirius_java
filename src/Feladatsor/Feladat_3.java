@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Harmadik {
+public class Feladat_3 {
 	public static void main(String[] args) {
 		int a; int b; int c; //bemeneti értékek
 		

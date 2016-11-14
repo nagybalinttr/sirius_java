@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Tizenharmadik{
+public class Feladat_13{
 	private static Scanner sc;
 	public static void main(String[] args) {
 		int a = 0;

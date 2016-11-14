@@ -5,23 +5,31 @@ import java.util.Scanner;
 
 
 public class Feladat_9 {
-
+    public static int numGen(int Tomb[])
+    {
+    	int i;
+    	Random rand = new Random();
+    	int random = (1+rand.nextInt(500)/3);
+        for(i = 0; i < Tomb.length; i++){
+            if(Tomb[i] == random){
+                return numGen(Tomb);
+            }
+        }
+        return random;
+    }
+    
 	public static void main(String[] args) {
-		int[] tomb = new int[20];
+		int tomb_hossza = 20;
+		int[] tomb = new int[tomb_hossza];
+		int Tomb[] = new int [500];
 		int keresett;
-		int random;
-		int i, j, k, seged;
+		int i, j, k=0, seged;
 		boolean talalat = false;
-		Random rand = new Random();
 		Scanner sc = new Scanner(System.in);
-		for(i = 0; i<20; i++){
-			random = rand.nextInt(2500);
-			for(j = 0; j < i; j++){
-				if(tomb[j] != random){
-					tomb[i] = random;
-				}
-			}
-		}
+		//tomb feltoltese veletlen szamokkal
+        for(i = 0; i < tomb.length; i++){
+        	tomb[i] = numGen(Tomb);
+        }
 		//rendezes	
 		for(j = 0; j < tomb.length; j++){
 			for(k = 0; k < tomb.length-1; k++){
@@ -36,8 +44,7 @@ public class Feladat_9 {
 		for(i = 0; i < tomb.length; i++){
 			System.out.print(tomb[i] + " ");
 		}
-		/////
-		//ertek be
+		//keresett ertek bekerese
 		System.out.println("\nAdj meg egy erteket: ");
 		keresett = sc.nextInt();
 		// kereses

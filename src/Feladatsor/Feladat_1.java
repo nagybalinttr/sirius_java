@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Elso {
+public class Feladat_1 {
 	public static void main(String[] args) {
 		int a; int b; //bemeneti értékek
 		double q =0; int m = 0; //számolt értékek

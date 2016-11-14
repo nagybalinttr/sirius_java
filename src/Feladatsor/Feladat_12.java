@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Tizenkettedik{
+public class Feladat_12{
 	private static Scanner sc;
 	public static void main(String[] args) {
 		int a = 0;

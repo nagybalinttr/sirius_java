@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Masodik {
+public class Feladat_2 {
 	public static void main(String[] args) {
 		int a; int b; //bemeneti értékek
 		Scanner sc = new Scanner(System.in);

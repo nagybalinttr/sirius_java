@@ -1,8 +1,6 @@
 package Feladatsor;
-import java.io.*;
-import java.util.Scanner;
 
-public class Tizedik{
+public class Feladat_10{
 	public static void main(String[] args) {
 		int i = 1;
 		int szum = 0;

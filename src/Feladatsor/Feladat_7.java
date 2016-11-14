@@ -1,8 +1,7 @@
 package Feladatsor;
-import java.io.*;
 import java.util.Scanner;
 
-public class Hetedik{
+public class Feladat_7{
 	private static Scanner sc;
 
 	public static void main(String[] args) {
