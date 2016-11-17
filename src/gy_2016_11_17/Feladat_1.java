@@ -17,12 +17,8 @@ public class Feladat_1 {
 		Random rand = new Random();
 		//tomb feltoltese
 		for(i = 0; i < 6; i++){
-			{
-				random = rand.nextInt(9) + 1;
-				if(random > 0){
-					tomb[i] = random;
-				}
-			}while(random < 0);
+			random = rand.nextInt(9) + 1;
+			tomb[i] = random;
 		}
 		for(i = 0; i < 6; i++){
 			System.out.print(tomb[i] + " ");

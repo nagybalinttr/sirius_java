@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 
 public class Feladat_9 {
-    public static int numGen(int Tomb[])
-    {
+    public static int numGen(int Tomb[]) {
     	int i;
     	Random rand = new Random();
     	int random = (1+rand.nextInt(500)/3);
