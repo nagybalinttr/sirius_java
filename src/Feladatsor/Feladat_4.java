@@ -8,7 +8,7 @@ public class Feladat_4 {
 		int db = 0;
 		int seged = 0;
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);// itt példányos System.out.println("Adj meg két egész számot!");tom a Scanner tipusu sc objektumomat a System.in adja meg hogy a console bol varom az ertekolvasast
 		System.out.println("Adj meg egy számot!");
 		n = sc.nextInt();
 		if(n < 0)

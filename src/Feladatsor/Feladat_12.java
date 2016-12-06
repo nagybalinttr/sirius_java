@@ -7,13 +7,12 @@ public class Feladat_12{
 		int a = 0;
 		int negativ = 0;
 		int pozitiv = 0;
-		
+		Scanner sc = new Scanner(System.in);// itt példányos System.out.println("Adj meg két egész számot!");tom a Scanner tipusu sc objektumomat a System.in adja meg hogy a console bol varom az ertekolvasast
 		System.out.println("12. feladat");
 		System.out.println("Adj meg egy szamot");
-		sc = new Scanner(System.in);
 		
-		do
-		{
+		
+		do{
 			a =  sc.nextInt();
 			if(a>0)
 			{

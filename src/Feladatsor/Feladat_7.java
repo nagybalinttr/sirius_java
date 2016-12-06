@@ -9,11 +9,10 @@ public class Feladat_7{
 		int db = 0;
 		int sum = 0;
 		double atlag = 0;
+		Scanner sc = new Scanner(System.in);// itt példányos System.out.println("Adj meg két egész számot!");tom a Scanner tipusu sc objektumomat a System.in adja meg hogy a console bol varom az ertekolvasast
 		
-		do
-		{
+		do{
 			System.out.println("Adj meg egy számot!");
-			sc = new Scanner(System.in);
 			a =  sc.nextInt();
 			if(a > 0)
 			{
