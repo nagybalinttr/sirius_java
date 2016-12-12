@@ -12,7 +12,7 @@ public class Feladat_1 {
 		Muveletek muvelet = new Muveletek();
 		a = ran.nextInt(29) + 1;
 		b = ran.nextInt(29) + 1;
-		System.out.println("Az a ertek: " + a +"\nA b érték: " + b);
+		System.out.println("Az a ertek: " + a +"\nA b ertek: " + b);
 		System.out.println("a + b = " + muvelet.Osszead(a, b));
 		System.out.println("a - b = " + muvelet.Kivonas(a, b));
 		System.out.println("a * b = " + muvelet.Szorzas(a, b));

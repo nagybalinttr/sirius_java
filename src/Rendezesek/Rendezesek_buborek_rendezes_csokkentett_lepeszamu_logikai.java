@@ -9,7 +9,7 @@ public class Rendezesek_buborek_rendezes_csokkentett_lepeszamu_logikai {
 		int i, j , seged, f1=0;
 		boolean csere = true;
 		for(j = 9; j >= 0; j--){
-			if(!csere) break; //az if trura vizsgal ezért ha a belsõ függvényünkben megtörtént a csere így az adott körbõl breakelhetünk is mert már rendezve vannak az elemek
+			if(!csere) break; //az if trura vizsgal ezï¿½rt ha a belsï¿½ fï¿½ggvï¿½nyï¿½nkben megtï¿½rtï¿½nt a csere ï¿½gy az adott kï¿½rbï¿½l breakelhetï¿½nk is mert mï¿½r rendezve vannak az elemek
 			csere = false;
 			for(i = 0; i < j; i++){
 				if(tomb[i+1] < tomb[i]){
@@ -21,6 +21,6 @@ public class Rendezesek_buborek_rendezes_csokkentett_lepeszamu_logikai {
 				f1++;
 			}
 		}
-		System.out.println("Lépésszám: " + f1);
+		System.out.println("Lepesszam: " + f1);
 	}
 }
