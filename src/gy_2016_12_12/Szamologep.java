@@ -19,8 +19,10 @@ public class Szamologep {
 		return eredmeny;
 	}
 	double[] masodfoku(double a, double b, double c){
-		double tomb[] = new double[3];
-		
+		double[] tomb = new double[3];
+		tomb[0] = b*b-4*a*c;
+		tomb[1] = (-b + Math.sqrt(tomb[0])) / (2*a);
+		tomb[2] = (-b - Math.sqrt(tomb[0])) / (2*a);
 		return tomb;
 	}
 }
