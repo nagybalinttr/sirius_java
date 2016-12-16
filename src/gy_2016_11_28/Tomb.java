@@ -49,7 +49,7 @@ public class Tomb {
 		return t;
 	}
 	public int Keres_lin(int keresett, int[] t){
-		int hol = -1; //azért kell -1 es értéket felvenni mert a ömböknek a legkisebb indexe a 0
+		int hol = -1; //azert kell -1 es erteket felvenni mert a tombnek a legkisebb indexe a 0
 		for(i = 0; i < 10; i++){
 			if(t[i] == keresett){
 				hol = i;
@@ -64,7 +64,7 @@ public class Tomb {
 		int kozepe = vege/2;
 		while(eleje<=vege){
 			if(t[kozepe] == keresett){
-				System.out.println("A keresett elem a " + kozepe + ". indexen talalható");
+				System.out.println("A keresett elem a " + kozepe + ". indexen talalhatï¿½");
 				return kozepe;
 			}
 			else if(keresett > t[kozepe]){

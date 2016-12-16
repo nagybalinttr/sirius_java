@@ -4,7 +4,7 @@ import java.util.Random;
 
 import gy_2016_11_28.Tomb;
 
-public class Feladat_1 {
+public class Feladat_1_szamologep {
 
 	public static void main(String[] args) {
 		int a, b;
