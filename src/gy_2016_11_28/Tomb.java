@@ -64,7 +64,7 @@ public class Tomb {
 		int kozepe = vege/2;
 		while(eleje<=vege){
 			if(t[kozepe] == keresett){
-				System.out.println("A keresett elem a " + kozepe + ". indexen talalhat�");
+				System.out.println("A keresett elem a " + kozepe + ". indexen talalhato");
 				return kozepe;
 			}
 			else if(keresett > t[kozepe]){
