@@ -5,8 +5,6 @@ import java.util.Random;
 public class NxN_matrix {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		int[][] matrix = {
 				{0, 1, 2, 3, 4},
 				{1, 0, 2, 3, 4},
@@ -59,17 +57,13 @@ public class NxN_matrix {
 			System.out.println(" ");
 		}	
 		*/
-		//oszlop szerinti listazas
-		/*
-		System.out.println("oszlop szerinti listazas");
+		//vegeredmenyek szamolasa
 		for(i = 0; i < matrix.length; i++){
 			for(j = 0; j < matrix[i].length; j++){
-				System.out.print(matrix[j][i] + " ");
-				seged[i] = seged[i] - matrix[j][i];
+				seged[i] -=matrix[j][i];
 			}
-			System.out.println(" ");
 		}
-		*/
+		
 		
 		System.out.println("Egyes cegek eredmeny");
 		for(k = 0; k < seged.length; k++){
