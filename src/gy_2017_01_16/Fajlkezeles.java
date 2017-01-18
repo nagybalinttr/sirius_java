@@ -1,7 +1,6 @@
 package gy_2017_01_16;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 

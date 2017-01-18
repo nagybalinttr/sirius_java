@@ -2,9 +2,7 @@ package gy_2017_01_16;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Fajlkezeles_5 {
 	public static void main(String[] args) throws IOException {
