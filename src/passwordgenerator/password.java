@@ -20,9 +20,9 @@ public class password {
 		String[] tomb_szam = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 		String[] tomb_spec = {"+", "!", "%", "/", "=", "(", ")", "<", ">", "&", "@", "{", "}", "["};
 		
-		System.out.println("Milyen hosszú  jelszót szeretnél?");
+		System.out.println("Milyen hosszu  jelszot szeretnel?");
 		hossz = sc.nextInt();
-		System.out.println("Hány darab jelszót szeretnél?");
+		System.out.println("Hany darab jelszot szeretnel?");
 		db = sc.nextInt();
 		
 		System.out.println("Kisbetuket akarsz a jelszoba? (true / false)");
