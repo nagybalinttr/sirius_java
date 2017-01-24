@@ -160,7 +160,7 @@ public class password_2{
     //Verison 1.0
     public static void main (String[] args) {
     	General gen = new General();
-    	for(int i = 0; i < 10000; i++){
+    	for(int i = 0; i < 1000; i++){
         	System.out.println(i + ". jelszo: " + gen.All(8));
         	System.out.println(i + ". jelszo: " + gen.Lower(8));
         	System.out.println(i + ". jelszo: " + gen.LowerAndUpperCase(8));
