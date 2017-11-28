@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class Feladat_1 {
 	public static void main(String[] args) {
-		int a; int b; //bemeneti értékek
-		double q =0; int m = 0; //számolt értékek
+		int a; int b; //bemeneti ï¿½rtï¿½kek
+		double q =0; int m = 0; //szï¿½molt ï¿½rtï¿½kek
 		Scanner sc = new Scanner(System.in); // itt peldanyositom a Scanner tipusu sc objektumomat a System.in adja meg hogy a console bol varom az ertekolvasast
-		System.out.println("Adj meg két egész számot!");
+		System.out.println("Adj meg kï¿½t egï¿½sz szï¿½mot!");
 		a = sc.nextInt();
 		b = sc.nextInt();
 		do{
@@ -15,6 +15,6 @@ public class Feladat_1 {
 			a = b;
 			b = m;
 		}while( m > 0 );
-		System.out.println("A megadott két szám legnagyobb közös osztója a: " + a);
+		System.out.println("A megadott kï¿½t szï¿½m legnagyobb kï¿½zï¿½s osztï¿½ja a: " + a);
 	}
 }
