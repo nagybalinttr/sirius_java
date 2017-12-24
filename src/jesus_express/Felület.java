@@ -1,112 +1,146 @@
 package jesus_express;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.*;
 
 public class Felület implements ActionListener {
+	static SpinnerModel mennyitmodel = new SpinnerNumberModel(1, 1, 10, 1);
 	
-	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-	int min = currentYear - 0;
-	int max = currentYear + 10;
-	int step = 1;
-	SpinnerModel evlista = new SpinnerNumberModel(currentYear, min, max, step);
+	static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+	static int min = currentYear - 0;
+	static int max = currentYear + 10;
+	static int step = 1;
+	static SpinnerModel evlista = new SpinnerNumberModel(currentYear, min, max, step);
+
+	//static String[] honapok = { "Január", "Február", "Március", "Június", "Július", "Augusztus", "Szeptember", "Október", "December" };
+	//static SpinnerListModel honaplistamodel = new SpinnerListModel(honapok);
+	static SpinnerModel honaplistamodel = new SpinnerNumberModel(1, 1, 12, 1);
 	
-	String[] honapok = {"Január", "Február", "Március", "Június", "Július", "Augusztus", "Szeptember", "Október", "December"};
-	SpinnerListModel honaplistamodel = new SpinnerListModel(honapok);
-	
-	SpinnerModel napok = new SpinnerNumberModel(1, 1, 31, 1);
-	
+	static SpinnerModel napok = new SpinnerNumberModel(1, 1, 31, 1);
+
 	static JFrame keret = new JFrame();
-	JPanel sor1 = new JPanel(new FlowLayout());
-	JPanel sor2 = new JPanel(new FlowLayout());
-	JPanel sor3 = new JPanel(new FlowLayout());
-	JPanel sor4 = new JPanel(new FlowLayout());
-	JPanel sor5 = new JPanel(new FlowLayout());
-	JPanel sor6 = new JPanel(new FlowLayout());
-	
+	JPanel felso = new JPanel();
+	JPanel also = new JPanel();
+	JPanel bal = new JPanel();
+	JPanel jobb = new JPanel();
+	JPanel sor1 = new JPanel();
+	JPanel sor2 = new JPanel();
+	JPanel sor3 = new JPanel();
+	JPanel sor4 = new JPanel();
+	JPanel sor5 = new JPanel();
+	JPanel sor6 = new JPanel();
+
 	JLabel kinekText = new JLabel("Kinek adjam az ajándékot?");
-	JTextField kinek = new JTextField(20);
-	
+	static JTextField kinek = new JTextField(15);
+
 	JLabel mitText = new JLabel("Mit adjak ajándékba?");
-	JTextField mit = new JTextField(20);
-	
+	static JTextField mit = new JTextField(15);
+
 	JLabel mennyitText = new JLabel("Mennyit adjak neki?");
-	JSpinner mennyit = new JSpinner();
-	
+	static JSpinner mennyit = new JSpinner(mennyitmodel);
+
 	JLabel mikorText = new JLabel("Mikor vigyel el neki?");
-	
-	JSpinner mikorEv = new JSpinner(evlista);
-	JSpinner mikorHo = new JSpinner(honaplistamodel);
-	JSpinner mikorNap = new JSpinner(napok);
-	
+
+	static JSpinner mikorEv = new JSpinner(evlista);
+	static JSpinner mikorHo = new JSpinner(honaplistamodel);
+	static JSpinner mikorNap = new JSpinner(napok);
+
 	JLabel sikeresText = new JLabel("Sikeresen a szállítás?");
-	JRadioButton option1 = new JRadioButton("Sikeres");
-    JRadioButton option2 = new JRadioButton("Sikertelen");
-    ButtonGroup group = new ButtonGroup();
-    
+	static JRadioButton option1 = new JRadioButton("Sikeres");
+	static JRadioButton option2 = new JRadioButton("Sikertelen");
+	ButtonGroup group = new ButtonGroup();
+
 	JLabel mentesText = new JLabel("Mentés");
-	JButton mentes = new JButton("Mentés");
+	static JButton mentes = new JButton("Mentés");
+
+	final static String picPath = "/Users/balintnagy/sirius_java/src/jesus_express/giphy.gif";
+	ImageIcon img = new ImageIcon(picPath);
+	JLabel imgLabel = new JLabel();
 	
-	void felulet()
-	{
-		System.out.print("App start");
+	public void felulet() {
+		keret.add(felso);
+		felso.add(bal);
 		
-		//1 sor
-		keret.add(kinekText);
-		keret.add(sor1);
-		sor1.add(kinek);
+		// 1 sor
+		bal.add(kinekText); bal.add(sor1); sor1.add(kinek);
 		
-		//2 sor
-		keret.add(mitText);
-		keret.add(sor2);
-		sor2.add(mit);
+		// 2 sor
+		bal.add(mitText); bal.add(sor2); sor2.add(mit);
+
+		// 3 sor
+		bal.add(mennyitText); bal.add(sor3); mennyit.setPreferredSize(new Dimension(100, 20)); sor3.add(mennyit);
 		
-		//3 sor
-		keret.add(mennyitText);
-		keret.add(sor3);
-		sor3.add(mennyit);
+		// 4 sor
+		bal.add(mikorText); bal.add(sor4); mikorEv.setPreferredSize(new Dimension(75, 20)); mikorHo.setPreferredSize(new Dimension(50, 20)); mikorNap.setPreferredSize(new Dimension(50, 20)); sor4.add(mikorEv); sor4.add(mikorHo); sor4.add(mikorNap);
+
+		// 5 sor
+		bal.add(sikeresText); bal.add(sor5); group.add(option1); group.add(option2); sor5.setLayout(new FlowLayout()); sor5.add(option1); sor5.add(option2);
+
+		// 6 sor
+		bal.add(mentesText); bal.add(sor6); mentes.setName("Mentés1"); sor6.add(mentes);
 		
-		//4 sor
-		keret.add(mikorText);
-		keret.add(sor4);
-		sor4.add(mikorEv);
-		sor4.add(mikorHo);
-		sor4.add(mikorNap);
+		bal.setLayout(new GridLayout(6, 2));
 		
-		//5 sor
-		keret.add(sikeresText);
-		keret.add(sor5);
-		group.add(option1);
-	    group.add(option2);
-	    sor5.setLayout(new FlowLayout());
-	    sor5.add(option1);
-	    sor5.add(option2);
+		felso.add(jobb);
+		jobb.add(imgLabel);
+		imgLabel.setIcon(img);
+		imgLabel.setBounds(0, 0, 60, 20);
 		
-	    //6 sor
-		keret.add(mentesText);
-		keret.add(sor6);
-		sor6.add(mentes);
+		keret.add(also);
+		also.setBackground(Color.RED);
+		keret.setLayout(new GridLayout(2, 1));
 		
-		keret.setLayout(new GridLayout(6,2));  
-		keret.setSize(500, 500);  
+		keret.setSize(750, 750);
 		keret.setVisible(true);
 		keret.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 	
+	public void actionPerformed(ActionEvent event) {
+
+	}
+
 	public static void main(String[] args) {
+		Kiszallitas k1 = new Kiszallitas("Mici mackó", "Méz", 1, "2017. 12. 24.", true);
+		Kiszallitas k2 = new Kiszallitas("Tigris", "Festék", 5, "2017. 12. 24.", true);
+		Kiszallitas k3 = new Kiszallitas("Zsebi baba", "Méz", 3, "2017. 12. 27.", true);
+		Kiszallitas k4 = new Kiszallitas("Malacka", "Borsó", 100, "2017. 12. 26.", true);
+		Kiszallitas k5 = new Kiszallitas("Nyuszi", "Répa", 10, "2017. 12. 25.", false);
+		
+		ArrayList<Kiszallitas> list = new ArrayList<Kiszallitas>();
+		list.add(k1);
+		list.add(k2);
+		list.add(k3);
+		list.add(k4);
+		list.add(k5);
+		
 		Felület uj = new Felület();
 		uj.felulet();
+		
+		mentes.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e)
+		    {	String kinek1 = kinek.getText();
+		    		String mit1 = mit.getText();
+		    		int mennyit1 = (int) mennyit.getValue();
+		    		String mikor1 = mikorEv.getValue() + ". " + mikorHo.getValue() + ". " + mikorNap.getValue() + ".";
+		    		Boolean allapot = option1.isSelected();
+		    		
+		    		System.out.println("kinek: " + kinek1);
+		    		System.out.println("mit: " + mit1);
+		    		System.out.println("mennyit: " + mennyit1);
+		    		System.out.println("Mikor: " + mikor1);
+		    		System.out.println("Állapot: " + allapot);
+		    		System.out.println("");
+		    		list.add(new Kiszallitas(kinek1, mit1, mennyit1, mikor1, allapot));
+		    		System.out.println(list);
+		    }
+		});
 	}
 }
