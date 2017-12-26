@@ -12,6 +12,15 @@ import java.util.Calendar;
 import javax.swing.*;
 
 public class Felület implements ActionListener {
+	static Kiszallitas k1 = new Kiszallitas("Maci", "Méz", 1, "2017-12-24", true);
+	static Kiszallitas k2 = new Kiszallitas("Tigris", "Festék", 5, "2017-12-24", true);
+	static Kiszallitas k3 = new Kiszallitas("Zsebi baba", "Méz", 3, "2017-12-27", true);
+	static Kiszallitas k4 = new Kiszallitas("Malacka", "Borsó", 100, "2017-12-26", true);
+	static Kiszallitas k5 = new Kiszallitas("Nyuszi", "Répa", 10, "2017-12-25", false);
+	
+	static ArrayList<Kiszallitas> list = new ArrayList<Kiszallitas>();
+	
+	/* felulet */
 	static SpinnerModel mennyitmodel = new SpinnerNumberModel(1, 1, 10, 1);
 	
 	static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -58,8 +67,11 @@ public class Felület implements ActionListener {
 	static JRadioButton option2 = new JRadioButton("Sikertelen");
 	ButtonGroup group = new ButtonGroup();
 
-	JLabel mentesText = new JLabel("Mentés");
-	static JButton mentes = new JButton("Mentés");
+	static JButton mentes = new JButton("Mentés / Módosítás");
+	static JButton kereses = new JButton("Keresés");
+	
+	static JLabel statusHL = new JLabel("Művelet állapota:");
+	static JLabel statusMsg = new JLabel("");
 
 	final static String picPath = "/Users/balintnagy/sirius_java/src/jesus_express/giphy.gif";
 	ImageIcon img = new ImageIcon(picPath);
@@ -85,7 +97,7 @@ public class Felület implements ActionListener {
 		bal.add(sikeresText); bal.add(sor5); group.add(option1); group.add(option2); sor5.setLayout(new FlowLayout()); sor5.add(option1); sor5.add(option2);
 
 		// 6 sor
-		bal.add(mentesText); bal.add(sor6); mentes.setName("Mentés1"); sor6.add(mentes);
+		bal.add(kereses); bal.add(mentes);
 		
 		bal.setLayout(new GridLayout(6, 2));
 		
@@ -95,7 +107,9 @@ public class Felület implements ActionListener {
 		imgLabel.setBounds(0, 0, 60, 20);
 		
 		keret.add(also);
-		also.setBackground(Color.RED);
+		also.add(statusHL); also.add(statusMsg);
+		also.setLayout(new GridLayout(1, 2));
+		
 		keret.setLayout(new GridLayout(2, 1));
 		
 		keret.setSize(750, 750);
@@ -103,18 +117,72 @@ public class Felület implements ActionListener {
 		keret.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	public void kereses()
+	{
+		String person = kinek.getText();
+		Boolean empty = true;
+		
+		for (int i = 0; i < list.size(); i++) {
+			if ((list.get(i).Addressee.toLowerCase()).equals(person.toLowerCase())) {
+				empty = false;
+				
+				mit.setText(list.get(i).GiftName);
+				mennyit.setValue(list.get(i).pty);
+				String[] parts = list.get(i).date.split("-");
+				mikorEv.setValue(Integer.parseInt(parts[0]));
+				mikorHo.setValue(Integer.parseInt(parts[1]));
+				mikorNap.setValue(Integer.parseInt(parts[2]));
+				
+				if (list.get(i).IsSuccess) {
+					option1.setSelected(true);
+					option2.setSelected(false);
+				} else {
+					option1.setSelected(false);
+					option2.setSelected(true);
+				}
+				statusMsg.setText("A találatot megtalálod a fenti boxoba beírva.");
+			}
+		}
+		
+		if (empty) {
+			statusMsg.setText("Nincs találat");
+		}
+	}
+	
+	public void mentes()
+	{
+		String person = kinek.getText();
+		String gift = mit.getText();
+		int pty = (int) mennyit.getValue();
+		String time = mikorEv.getValue() + "-" + mikorHo.getValue() + "-" + mikorNap.getValue();
+		Boolean status = option1.isSelected();
+		
+		for (int i = 0; i < list.size(); i++) {
+			if ((list.get(i).Addressee.toLowerCase()).equals(person.toLowerCase())) {
+				list.set(i, new Kiszallitas(person, gift, pty, time, status));
+				statusMsg.setText("Sikeres módosítás!");
+			} else {
+				list.add(new Kiszallitas(person, gift, pty, time, status));
+				statusMsg.setText("Sikeres mentés!");
+			}
+		}
+		/*
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).Addressee);
+			System.out.println(list.get(i).GiftName);
+			System.out.println(list.get(i).pty);
+			System.out.println(list.get(i).date);
+			System.out.println(list.get(i).IsSuccess);
+			System.out.println("");
+		}
+		*/
+	}
+	
 	public void actionPerformed(ActionEvent event) {
 
 	}
 
 	public static void main(String[] args) {
-		Kiszallitas k1 = new Kiszallitas("Mici mackó", "Méz", 1, "2017. 12. 24.", true);
-		Kiszallitas k2 = new Kiszallitas("Tigris", "Festék", 5, "2017. 12. 24.", true);
-		Kiszallitas k3 = new Kiszallitas("Zsebi baba", "Méz", 3, "2017. 12. 27.", true);
-		Kiszallitas k4 = new Kiszallitas("Malacka", "Borsó", 100, "2017. 12. 26.", true);
-		Kiszallitas k5 = new Kiszallitas("Nyuszi", "Répa", 10, "2017. 12. 25.", false);
-		
-		ArrayList<Kiszallitas> list = new ArrayList<Kiszallitas>();
 		list.add(k1);
 		list.add(k2);
 		list.add(k3);
@@ -126,21 +194,16 @@ public class Felület implements ActionListener {
 		
 		mentes.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e)
-		    {	String kinek1 = kinek.getText();
-		    		String mit1 = mit.getText();
-		    		int mennyit1 = (int) mennyit.getValue();
-		    		String mikor1 = mikorEv.getValue() + ". " + mikorHo.getValue() + ". " + mikorNap.getValue() + ".";
-		    		Boolean allapot = option1.isSelected();
-		    		
-		    		System.out.println("kinek: " + kinek1);
-		    		System.out.println("mit: " + mit1);
-		    		System.out.println("mennyit: " + mennyit1);
-		    		System.out.println("Mikor: " + mikor1);
-		    		System.out.println("Állapot: " + allapot);
-		    		System.out.println("");
-		    		list.add(new Kiszallitas(kinek1, mit1, mennyit1, mikor1, allapot));
-		    		System.out.println(list);
+		    {	
+		    		uj.mentes();
 		    }
+		});
+		
+		kereses.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				uj.kereses();
+			}
 		});
 	}
 }
