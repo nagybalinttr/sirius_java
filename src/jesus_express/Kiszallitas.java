@@ -15,7 +15,7 @@ public class Kiszallitas {
 		this.date = datum;
 		this.IsSuccess = sikeres;
 	}
-	
+
 	public String getCimzett()
 	{
 		return Addressee;
