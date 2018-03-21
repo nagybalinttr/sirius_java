@@ -3,15 +3,16 @@ package app;
 import java.awt.Graphics;
 
 public interface Player {
-	public void draw(Graphics g) {
+	public default void draw(Graphics g) {
 		
 	}
 	
-	public void move() {
+	public static void move() {
 		
 	}
 	
-	public int getY() {
+	public static int getY() {
+		return 0;
 		
 	}
 }
